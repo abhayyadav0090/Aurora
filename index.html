@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Aurora — Design that breathes</title>
+  <meta name="description" content="A modern, premium frontend template with cinematic motion, editorial typography, and beautifully crafted components." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Ambient glow layers -->
+  <div class="glow-layer"></div>
+  <div class="glow-layer"></div>
+  <div class="glow-layer"></div>
+
+  <!-- ── Header ──────────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#">Aurora</a>
+      <nav class="nav" id="nav">
+        <a href="#home"         class="nav-link">Home</a>
+        <a href="#features"     class="nav-link">Features</a>
+        <a href="#pricing"      class="nav-link">Pricing</a>
+        <a href="#testimonials" class="nav-link">Reviews</a>
+        <a href="#contact"      class="nav-link">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button id="themeToggle" class="btn ghost">☀ Light</button>
+        <button id="menuToggle" class="btn burger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── Hero ──────────────────────────────────────────── -->
+    <section id="home" class="hero">
+      <div class="container hero-grid">
+
+        <div class="hero-content">
+          <div class="eyebrow">Introducing Aurora v2.0</div>
+          <h1 class="title">Design that<br><em>breathes.</em></h1>
+          <p class="lead">A luxury-grade frontend template with cinematic motion, editorial typography, and components built for products that demand to be noticed.</p>
+          <div class="cta-row">
+            <a class="btn primary" href="#features">Explore Features</a>
+            <a class="btn outline" href="#pricing">View Pricing →</a>
+          </div>
+          <ul class="stats">
+            <li><strong>99.9%</strong><span>Uptime SLA</span></li>
+            <li><strong>&lt;180ms</strong><span>Avg. TTFB</span></li>
+            <li><strong>100k+</strong><span>Scale ready</span></li>
+            <li><strong>WCAG AA</strong><span>Accessible</span></li>
+          </ul>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="card-visual">
+            <div class="card-header">
+              <div class="dot red"></div>
+              <div class="dot yellow"></div>
+              <div class="dot green"></div>
+              <div class="card-title-bar">aurora — dashboard</div>
+            </div>
+            <div class="card-body">
+              <div class="live-badge">
+                <div class="live-dot"></div>
+                Live metrics
+              </div>
+              <div class="mini-charts" id="miniCharts">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+              </div>
+              <div class="metric-row">
+                <div class="metric">
+                  <div class="metric-label">Revenue</div>
+                  <div class="metric-value up">₹2.4M</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Churn</div>
+                  <div class="metric-value down">−1.2%</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">NPS</div>
+                  <div class="metric-value">86</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Marquee ────────────────────────────────────────── -->
+    <div class="marquee-strip" aria-hidden="true">
+      <div class="marquee-track">
+        <span class="marquee-item">Performant</span>
+        <span class="marquee-item">Accessible</span>
+        <span class="marquee-item">Type-safe</span>
+        <span class="marquee-item">Edge Ready</span>
+        <span class="marquee-item">Dark Mode</span>
+        <span class="marquee-item">SSR Friendly</span>
+        <span class="marquee-item">WCAG 2.1 AA</span>
+        <span class="marquee-item">Micro-interactions</span>
+        <span class="marquee-item">Production Grade</span>
+        <span class="marquee-item">Performant</span>
+        <span class="marquee-item">Accessible</span>
+        <span class="marquee-item">Type-safe</span>
+        <span class="marquee-item">Edge Ready</span>
+        <span class="marquee-item">Dark Mode</span>
+        <span class="marquee-item">SSR Friendly</span>
+        <span class="marquee-item">WCAG 2.1 AA</span>
+        <span class="marquee-item">Micro-interactions</span>
+        <span class="marquee-item">Production Grade</span>
+      </div>
+    </div>
+
+    <!-- ── Features ──────────────────────────────────────── -->
+    <section id="features" class="section">
+      <div class="container">
+        <div class="section-label reveal">Features</div>
+        <h2 class="section-title reveal reveal-delay-1">Everything your product needs<br>to stand apart.</h2>
+        <p class="section-sub reveal reveal-delay-2">Refined components, thoughtful defaults, and a design system that scales with your ambition.</p>
+
+        <div class="features-grid">
+          <article class="feat-card reveal">
+            <div class="feat-icon">⚡</div>
+            <h3>Edge Performance</h3>
+            <p>SSR-ready, CDN-optimized, and engineered for sub-200ms time-to-first-byte. Speed isn't a feature — it's the foundation.</p>
+            <span class="feat-tag">Core Web Vitals A+</span>
+          </article>
+          <article class="feat-card reveal reveal-delay-1">
+            <div class="feat-icon">🔒</div>
+            <h3>Enterprise Security</h3>
+            <p>RBAC, audit logs, CSP headers, and encrypted sessions out of the box. Security by design, not by checklist.</p>
+            <span class="feat-tag">SOC 2 Ready</span>
+          </article>
+          <article class="feat-card reveal reveal-delay-2">
+            <div class="feat-icon">♾️</div>
+            <h3>Infinite Scale</h3>
+            <p>Microservices-native architecture with background job support, event sourcing, and horizontal scaling built in.</p>
+            <span class="feat-tag">Cloud Native</span>
+          </article>
+          <article class="feat-card reveal reveal-delay-3">
+            <div class="feat-icon">🎨</div>
+            <h3>Design System</h3>
+            <p>A token-driven system with semantic color roles, fluid type scales, and accessible patterns — ready to fork and own.</p>
+            <span class="feat-tag">Figma Included</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Pricing ────────────────────────────────────────── -->
+    <section id="pricing" class="section alt">
+      <div class="container">
+        <div class="section-label reveal">Pricing</div>
+        <h2 class="section-title reveal reveal-delay-1">Simple, honest pricing.</h2>
+        <p class="section-sub reveal reveal-delay-2">No hidden fees. No lock-in. Cancel anytime.</p>
+
+        <div class="pricing-grid">
+
+          <div class="price-card reveal">
+            <div class="price-tier">Starter</div>
+            <div class="price">Free</div>
+            <div class="price-desc">For individuals exploring ideas and side projects.</div>
+            <div class="price-divider"></div>
+            <ul class="price-features">
+              <li class="included">3 projects</li>
+              <li class="included">Community support</li>
+              <li class="included">Core components</li>
+              <li>Priority queue</li>
+              <li>Custom domain</li>
+              <li>SLA guarantee</li>
+            </ul>
+            <div class="price-cta">
+              <button class="btn outline" style="width:100%;justify-content:center">Get Started Free</button>
+            </div>
+          </div>
+
+          <div class="price-card featured reveal reveal-delay-1">
+            <div class="price-tier">Pro</div>
+            <div class="price">₹999 <sub>/ mo</sub></div>
+            <div class="price-desc">For teams shipping fast and expecting reliability.</div>
+            <div class="price-divider"></div>
+            <ul class="price-features">
+              <li class="included">Unlimited projects</li>
+              <li class="included">Priority support</li>
+              <li class="included">All components</li>
+              <li class="included">Custom domain</li>
+              <li class="included">99.9% SLA</li>
+              <li>White-label</li>
+            </ul>
+            <div class="price-cta">
+              <button class="btn primary" style="width:100%;justify-content:center">Start Free Trial</button>
+            </div>
+          </div>
+
+          <div class="price-card reveal reveal-delay-2">
+            <div class="price-tier">Enterprise</div>
+            <div class="price">Custom</div>
+            <div class="price-desc">Bespoke solutions, dedicated support, and security reviews.</div>
+            <div class="price-divider"></div>
+            <ul class="price-features">
+              <li class="included">Everything in Pro</li>
+              <li class="included">Dedicated CSM</li>
+              <li class="included">Onboarding</li>
+              <li class="included">Custom SLAs</li>
+              <li class="included">SSO / SAML</li>
+              <li class="included">White-label</li>
+            </ul>
+            <div class="price-cta">
+              <button class="btn outline" style="width:100%;justify-content:center">Contact Sales →</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Testimonials ───────────────────────────────────── -->
+    <section id="testimonials" class="testimonials section">
+      <div class="container">
+        <div class="section-label reveal">Testimonials</div>
+        <h2 class="section-title reveal reveal-delay-1">Trusted by builders<br>who care about craft.</h2>
+        <div class="testi-grid">
+
+          <div class="testi-card reveal">
+            <div class="stars">★★★★★</div>
+            <p class="testi-text">"Aurora replaced three separate UI libraries for us. The attention to motion and typography is unlike anything else in the market. Our conversion rate jumped 18%."</p>
+            <div class="testi-author">
+              <div class="testi-avatar">AR</div>
+              <div>
+                <div class="testi-name">Ananya Rao</div>
+                <div class="testi-role">Head of Product · Zephyr Labs</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card reveal reveal-delay-1">
+            <div class="stars">★★★★★</div>
+            <p class="testi-text">"I've shipped five startups. Aurora is the first template where I didn't feel like I was fighting the design system. It just works — and it looks incredible."</p>
+            <div class="testi-author">
+              <div class="testi-avatar" style="background: linear-gradient(135deg, #c9a84c, #f0d080); color: #1a1200">SK</div>
+              <div>
+                <div class="testi-name">Siddharth Kumar</div>
+                <div class="testi-role">Founder · Nimbus.io</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card reveal reveal-delay-2">
+            <div class="stars">★★★★★</div>
+            <p class="testi-text">"The dark mode implementation alone is worth every rupee. Our engineering team went from design handoff to production in under two weeks."</p>
+            <div class="testi-author">
+              <div class="testi-avatar" style="background: linear-gradient(135deg, #e8637a, #f0a0a0)">PM</div>
+              <div>
+                <div class="testi-name">Priya Menon</div>
+                <div class="testi-role">CTO · Drift Analytics</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Contact ────────────────────────────────────────── -->
+    <section id="contact" class="section">
+      <div class="container contact-grid">
+
+        <div class="contact-info reveal">
+          <div class="section-label" style="margin-bottom:14px">Contact</div>
+          <h2>Let's build something<br><em style="font-style:italic;color:var(--gold)">remarkable.</em></h2>
+          <p>Questions, custom work, or just want to say hello — we read every message and respond within one business day.</p>
+          <ul class="contact-list">
+            <li><strong>Email</strong> hello@aurora.example</li>
+            <li><strong>Location</strong> Chandpur, UP, India</li>
+            <li><strong>Phone</strong> +91 90000 00000</li>
+            <li><strong>Response time</strong> &lt; 24 hours</li>
+          </ul>
+        </div>
+
+        <form id="contactForm" class="contact-form reveal reveal-delay-2" novalidate>
+          <div class="form-group">
+            <label for="fname">Name</label>
+            <input type="text" id="fname" name="name" placeholder="Your full name" autocomplete="name" required />
+          </div>
+          <div class="form-group">
+            <label for="femail">Email</label>
+            <input type="email" id="femail" name="email" placeholder="you@example.com" autocomplete="email" required />
+          </div>
+          <div class="form-group">
+            <label for="fsubject">Subject</label>
+            <input type="text" id="fsubject" name="subject" placeholder="What's this about?" />
+          </div>
+          <div class="form-group">
+            <label for="fmessage">Message</label>
+            <textarea id="fmessage" name="message" rows="5" placeholder="Tell us everything…" required></textarea>
+          </div>
+          <div class="form-row">
+            <button type="submit" class="btn primary">Send Message</button>
+            <div id="formStatus" class="form-status" aria-live="polite"></div>
+          </div>
+        </form>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-brand">Aurora</div>
+        <div class="footer-copy">© <span id="year"></span> Aurora. Built with care.</div>
+      </div>
+      <nav class="socials" aria-label="Social links">
+        <a href="#" aria-label="Twitter">Twitter</a>
+        <a href="#" aria-label="GitHub">GitHub</a>
+        <a href="#" aria-label="Docs">Docs</a>
+        <a href="#" aria-label="LinkedIn">LinkedIn</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
