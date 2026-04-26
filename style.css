@@ -42,7 +42,9 @@ body {
   line-height: 1.55;
   font-size: 16px;
   overflow-x: hidden;
-  cursor: none;
+}
+@media (pointer: fine) {
+  body { cursor: none; }
 }
 a { color: inherit; text-decoration: none }
 img { display: block; max-width: 100% }
@@ -86,10 +88,16 @@ body::before {
 }
 
 /* ── Ambient glow layers ─────────────────────────────────── */
-.glow-layer {
+.glow-wrap {
   position: fixed;
+  inset: 0;
   pointer-events: none;
   z-index: 0;
+  overflow: hidden;
+}
+.glow-layer {
+  position: absolute;
+  pointer-events: none;
   border-radius: 50%;
   filter: blur(120px);
   opacity: .12;
@@ -257,7 +265,7 @@ body::before {
   color: var(--gold);
   margin-bottom: 20px;
   opacity: 0;
-  animation: fadeUp .6s .1s var(--ease) forwards;
+  animation: fadeUp .6s .1s var(--ease) both;
 }
 .eyebrow::before {
   content: '';
@@ -271,7 +279,7 @@ body::before {
   letter-spacing: -.01em;
   margin-bottom: 20px;
   opacity: 0;
-  animation: fadeUp .7s .2s var(--ease) forwards;
+  animation: fadeUp .7s .2s var(--ease) both;
 }
 .title em {
   font-style: italic;
@@ -286,13 +294,13 @@ body::before {
   margin-bottom: 28px;
   font-weight: 300;
   opacity: 0;
-  animation: fadeUp .7s .32s var(--ease) forwards;
+  animation: fadeUp .7s .32s var(--ease) both;
 }
 .cta-row {
   display: flex; gap: 14px;
   margin-bottom: 44px;
   opacity: 0;
-  animation: fadeUp .7s .44s var(--ease) forwards;
+  animation: fadeUp .7s .44s var(--ease) both;
 }
 .stats {
   display: flex; gap: 28px;
@@ -300,7 +308,7 @@ body::before {
   border-top: 1px solid var(--border);
   padding-top: 24px;
   opacity: 0;
-  animation: fadeUp .7s .54s var(--ease) forwards;
+  animation: fadeUp .7s .54s var(--ease) both;
 }
 .stats li { display: flex; flex-direction: column; gap: 2px }
 .stats strong {
@@ -318,7 +326,7 @@ body::before {
 /* ── Hero Visual / Terminal Card ─────────────────────────── */
 .hero-visual {
   opacity: 0;
-  animation: fadeIn .9s .4s var(--ease) forwards;
+  animation: fadeIn .9s .4s var(--ease) both;
 }
 @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
 
@@ -854,7 +862,7 @@ body.light body::before  { opacity: .025 }
 @media (max-width: 768px) {
   .container    { padding: 0 20px }
   .hero         { padding: 60px 0 60px }
-  .nav          { display: none; flex-direction: column; position: absolute; top: 70px; left: 0; right: 0; background: var(--bg); border-bottom: 1px solid var(--border); padding: 12px; gap: 2px }
+  .nav          { display: none; flex-direction: column; position: absolute; top: 70px; left: 0; right: 0; background: var(--bg); border-bottom: 1px solid var(--border); padding: 12px; gap: 2px; z-index: 50 }
   .nav.open     { display: flex }
   .btn.burger   { display: inline-flex }
   .site-header  { position: relative }
@@ -863,11 +871,22 @@ body.light body::before  { opacity: .025 }
   .testi-grid   { grid-template-columns: 1fr }
   .features-grid{ grid-template-columns: 1fr }
   .price-card.featured { transform: none }
-  body { cursor: auto }
   .cursor-dot, .cursor-ring { display: none }
   .cta-row { flex-direction: column; align-items: flex-start }
-  .stats { gap: 16px }
+  .stats { gap: 16px; flex-wrap: wrap }
 }
+
+/* Desktop mode on phones — nav must be accessible */
+@media (min-width: 769px) and (pointer: coarse) {
+  /* Touch device in desktop mode: show normal nav, restore cursor */
+  body { cursor: auto !important }
+  .cursor-dot, .cursor-ring { display: none !important }
+  .btn.burger { display: none }
+  .nav { display: flex !important }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important }
+  /* Make sure hidden elements become visible when animations are disabled */
+  .eyebrow, .title, .lead, .cta-row, .stats, .hero-visual { opacity: 1 !important; transform: none !important }
 }
