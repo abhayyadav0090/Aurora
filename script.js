@@ -16,11 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Year ────────────────────────────────────────────────
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // ── Custom cursor ────────────────────────────────────────
-  if (cursorDot && cursorRing && window.matchMedia('(pointer:fine)').matches) {
+  // ── Custom cursor (only on true mouse/trackpad devices) ──
+  if (cursorDot && cursorRing && window.matchMedia('(pointer: fine) and (hover: hover)').matches) {
     let ringX = 0, ringY = 0;
     let dotX  = 0, dotY  = 0;
-    let rafId;
 
     document.addEventListener('mousemove', e => {
       dotX = e.clientX;
@@ -28,13 +27,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const tickCursor = () => {
-      // Dot follows instantly
       cursorDot.style.transform = `translate(calc(-50% + ${dotX}px), calc(-50% + ${dotY}px))`;
-      // Ring follows with lerp for smoothness
       ringX += (dotX - ringX) * 0.12;
       ringY += (dotY - ringY) * 0.12;
       cursorRing.style.transform = `translate(calc(-50% + ${ringX}px), calc(-50% + ${ringY}px))`;
-      rafId = requestAnimationFrame(tickCursor);
+      requestAnimationFrame(tickCursor);
     };
     tickCursor();
 
@@ -46,6 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
       cursorDot.style.opacity  = '1';
       cursorRing.style.opacity = '1';
     });
+  } else {
+    // Not a mouse device — hide cursor elements and restore default cursor
+    if (cursorDot)  cursorDot.style.display  = 'none';
+    if (cursorRing) cursorRing.style.display = 'none';
+    document.body.style.cursor = 'auto';
   }
 
   // ── Mobile menu ──────────────────────────────────────────
@@ -211,16 +213,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ── Parallax on hero glow layers ─────────────────────────
-  const glows = document.querySelectorAll('.glow-layer');
-  window.addEventListener('mousemove', e => {
-    const cx = e.clientX / window.innerWidth  - 0.5;
-    const cy = e.clientY / window.innerHeight - 0.5;
-    glows.forEach((g, i) => {
-      const depth = (i + 1) * 18;
-      g.style.transform = `translate(${cx * depth}px, ${cy * depth}px)`;
-    });
-  }, { passive: true });
+  // ── Parallax on hero glow layers (mouse only) ────────────
+  if (window.matchMedia('(pointer: fine) and (hover: hover)').matches) {
+    const glows = document.querySelectorAll('.glow-layer');
+    window.addEventListener('mousemove', e => {
+      const cx = e.clientX / window.innerWidth  - 0.5;
+      const cy = e.clientY / window.innerHeight - 0.5;
+      glows.forEach((g, i) => {
+        const depth = (i + 1) * 18;
+        g.style.transform = `translate(${cx * depth}px, ${cy * depth}px)`;
+      });
+    }, { passive: true });
+  }
 
   // ── Number counter animation for stats ───────────────────
   const statsObserver = new IntersectionObserver(entries => {
